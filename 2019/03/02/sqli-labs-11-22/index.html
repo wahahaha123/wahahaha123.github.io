@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="前10道题都是get型的，包含的种类也是比较多了，这次的是post型注入一般都是登陆绕过 因此需要用到火狐的插件：hackbar &amp;lt; !–more–&amp;gt; less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)和上一次的一样，先输入单引号 1uname=&apos;&amp;amp;passwd=2&amp;amp;submit=">
+<meta name="description" content="前10道题都是get型的，包含的种类也是比较多了，这次的是post型注入一般都是登陆绕过 因此需要用到火狐的插件：hackbar&amp;lt; !–more–&amp;gt; less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)和上一次的一样，先输入单引号 1uname=&apos;&amp;amp;passwd=2&amp;amp;submit=S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sqli-labs 11-22">
 <meta property="og:url" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/index.html">
 <meta property="og:site_name" content="Cherish">
-<meta property="og:description" content="前10道题都是get型的，包含的种类也是比较多了，这次的是post型注入一般都是登陆绕过 因此需要用到火狐的插件：hackbar &amp;lt; !–more–&amp;gt; less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)和上一次的一样，先输入单引号 1uname=&apos;&amp;amp;passwd=2&amp;amp;submit=">
+<meta property="og:description" content="前10道题都是get型的，包含的种类也是比较多了，这次的是post型注入一般都是登陆绕过 因此需要用到火狐的插件：hackbar&amp;lt; !–more–&amp;gt; less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)和上一次的一样，先输入单引号 1uname=&apos;&amp;amp;passwd=2&amp;amp;submit=S">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/2.png">
@@ -121,10 +121,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/33.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/34.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/35.png">
-<meta property="og:updated_time" content="2019-03-08T08:15:32.606Z">
+<meta property="og:updated_time" content="2019-03-08T08:20:00.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqli-labs 11-22">
-<meta name="twitter:description" content="前10道题都是get型的，包含的种类也是比较多了，这次的是post型注入一般都是登陆绕过 因此需要用到火狐的插件：hackbar &amp;lt; !–more–&amp;gt; less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)和上一次的一样，先输入单引号 1uname=&apos;&amp;amp;passwd=2&amp;amp;submit=">
+<meta name="twitter:description" content="前10道题都是get型的，包含的种类也是比较多了，这次的是post型注入一般都是登陆绕过 因此需要用到火狐的插件：hackbar&amp;lt; !–more–&amp;gt; less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)和上一次的一样，先输入单引号 1uname=&apos;&amp;amp;passwd=2&amp;amp;submit=S">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/02/sqli-labs-11-22/1.png">
 
 
@@ -336,8 +336,7 @@
 
       
         <p>前10道题都是get型的，包含的种类也是比较多了，这次的是post型注入一般都是登陆绕过</p>
-<p>因此需要用到火狐的插件：<strong>hackbar</strong></p>
-<p>&lt; !–more–&gt;</p>
+<p>因此需要用到火狐的插件：<strong>hackbar</strong><br>&lt; !–more–&gt;</p>
 <h1 id="less11-POST-Error-Based-Single-quotes-String-基于错误的POST型单引号字符型注入"><a href="#less11-POST-Error-Based-Single-quotes-String-基于错误的POST型单引号字符型注入" class="headerlink" title="less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)"></a>less11 POST - Error Based - Single quotes- String (基于错误的POST型单引号字符型注入)</h1><p>和上一次的一样，先输入单引号</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname='&amp;passwd=2&amp;submit=Submit</span><br></pre></td></tr></table></figure>
 <p>发现报了sql语句的语法错误，那么应该存在sql注入，因为没过滤单引号，我们就可以闭合单引号进行注入</p>
