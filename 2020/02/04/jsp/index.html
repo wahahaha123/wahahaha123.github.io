@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Jsp/Servlet介绍Jsp/Servlet是开发动态web的一门技术，特别擅长开发B/S结构的程序。 开发动态网页的主流语言主要有：php、jsp、.net  php：适用于做中小型系统，开发成本低，能够对变动的需求作出快速的反应 jsp：适用于做大型分布式系统 .net：只能运行在windows系统上，和jsp类似  那么对于动态网页，一定也就有静态网页，二者的区别如下：  动态网页：动态">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA学习第一弹--jsp">
+<meta property="og:url" content="http://yoursite.com/2020/02/04/jsp/index.html">
+<meta property="og:site_name" content="Cherish">
+<meta property="og:description" content="Jsp/Servlet介绍Jsp/Servlet是开发动态web的一门技术，特别擅长开发B/S结构的程序。 开发动态网页的主流语言主要有：php、jsp、.net  php：适用于做中小型系统，开发成本低，能够对变动的需求作出快速的反应 jsp：适用于做大型分布式系统 .net：只能运行在windows系统上，和jsp类似  那么对于动态网页，一定也就有静态网页，二者的区别如下：  动态网页：动态">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2020/02/04/jsp/D:/blog/hexo/source/_posts/jsp/tomcat目录.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/04/jsp/D:/blog/hexo/source/_posts/jsp/注释.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/04/jsp/D:/blog/hexo/source/_posts/jsp/javaweb.png">
+<meta property="og:updated_time" content="2020-02-04T03:25:02.779Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA学习第一弹--jsp">
+<meta name="twitter:description" content="Jsp/Servlet介绍Jsp/Servlet是开发动态web的一门技术，特别擅长开发B/S结构的程序。 开发动态网页的主流语言主要有：php、jsp、.net  php：适用于做中小型系统，开发成本低，能够对变动的需求作出快速的反应 jsp：适用于做大型分布式系统 .net：只能运行在windows系统上，和jsp类似  那么对于动态网页，一定也就有静态网页，二者的区别如下：  动态网页：动态">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/04/jsp/D:/blog/hexo/source/_posts/jsp/tomcat目录.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/04/jsp/">
+
+
+
+
+
+  <title>JAVA学习第一弹--jsp | Cherish</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Cherish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-所有文章">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            所有文章
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/04/jsp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cherish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JAVA学习第一弹--jsp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-04T10:31:25+08:00">
+                2020-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Jsp-Servlet介绍"><a href="#Jsp-Servlet介绍" class="headerlink" title="Jsp/Servlet介绍"></a>Jsp/Servlet介绍</h1><p><strong>Jsp/Servlet</strong>是开发<strong>动态web</strong>的一门技术，特别擅长开发<strong>B/S</strong>结构的程序。</p>
+<p>开发动态网页的主流语言主要有：php、jsp、.net</p>
+<ul>
+<li>php：适用于做中小型系统，开发成本低，能够对变动的需求作出快速的反应</li>
+<li>jsp：适用于做大型分布式系统</li>
+<li>.net：只能运行在windows系统上，和jsp类似</li>
+</ul>
+<p>那么对于动态网页，一定也就有静态网页，二者的区别如下：</p>
+<ul>
+<li>动态网页：动态网页中的数据主要是从数据库中获取（mysql/oracle）</li>
+<li>静态网页：网页中的而数据固定写死在html代码中</li>
+</ul>
+<p>对于B/S架构，C/S架构与其相对，二者区别如下：</p>
+<ul>
+<li>B/S：Browser/Server，浏览器对服务器的程序</li>
+<li>C/S：Client/Server，客户端对服务器</li>
+</ul>
+<p>这两种架构的界限，其实别不是太明显，有时候，一个B/S架构，也可以改变一下，使它看起来像一个C/S架构。</p>
+<h1 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h1><p>Jsp常用的web服务器有：Tomcat（主要使用这个，开源的而且免费）、weblogic（不开源不免费）、webphere，jboss等</p>
+<h3 id="tomcat目录结构"><a href="#tomcat目录结构" class="headerlink" title="tomcat目录结构"></a>tomcat目录结构</h3><p><img src="/2020/02/04/jsp/D:/blog\hexo\source\_posts\jsp\tomcat目录.png" alt="Tomcat目录结构"></p>
+<h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><h3 id="什么是jsp"><a href="#什么是jsp" class="headerlink" title="什么是jsp"></a>什么是jsp</h3><p>Java server page，java服务器页面，jsp和html文件几乎是一模一样的，不同的是jsp中可以书写java代码</p>
+<h3 id="jsp三大指令"><a href="#jsp三大指令" class="headerlink" title="jsp三大指令"></a>jsp三大指令</h3><p>指令的语法规则：</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ 指令名 属性名=属性值 %&gt;</span><br></pre></td></tr></table></figure>
+<p>指令不是给程序员看的，是给服务器使用的。</p>
+<p>在jsp中有3大指令：分别是<strong>page</strong>指令、<strong>taglib</strong>指令、<strong>include</strong>指令</p>
+<h3 id="jsp中的小脚本（脚本片段）"><a href="#jsp中的小脚本（脚本片段）" class="headerlink" title="jsp中的小脚本（脚本片段）"></a>jsp中的小脚本（脚本片段）</h3><p>jsp中可以书写java代码，但是需要在脚本片段中书写Java代码。</p>
+<p><strong>脚本片段的语法规则：</strong></p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">   Java代码块。</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+<p><font color="red">注意事项：</font>脚本片段类似于类中的方法，因此不能够在脚本片段中定义方法;同一个Jsp文件中的所有脚本片段最终会被合并为一个</p>
+<h3 id="jsp中的表达式（脚本表达式）"><a href="#jsp中的表达式（脚本表达式）" class="headerlink" title="jsp中的表达式（脚本表达式）"></a>jsp中的表达式（脚本表达式）</h3><p>脚本表达式的功能类似于：out.print(变量名)</p>
+<p>目的是将内容输出到浏览器中</p>
+<p><strong>表达式的语法规则：</strong></p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= 变量名 %&gt;</span><br></pre></td></tr></table></figure>
+<p><font color="red">注意事项:</font>变量名后面不许加”;”</p>
+<h3 id="jsp声明"><a href="#jsp声明" class="headerlink" title="jsp声明"></a>jsp声明</h3><p>脚本片段中不能够定义方法，但是在jsp声明中可以定义方法</p>
+<p><strong>声明的语法规则：</strong></p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%!</span><br><span class="line">  方法定义</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+<p><font color="red">注意事项：</font>如果需要定义一个方法的时候，就在jsp声明中定义，调用方法或者需要书写其他的代码的时候，就书写在脚本片段中。</p>
+<h3 id="jsp注释"><a href="#jsp注释" class="headerlink" title="jsp注释"></a>jsp注释</h3><p>jsp中有两种注释，分别为：</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--被注释的内容--&gt;</span><br><span class="line">&lt;%--被注释的内容--%&gt;</span><br></pre></td></tr></table></figure>
+<p>这两种的区别如下：&lt;%– –%&gt;注释在查看网页源代码的时候，并不显示出来</p>
+<p><img src="/2020/02/04/jsp/D:/blog\hexo\source\_posts\jsp\注释.png" alt="注释"></p>
+<h3 id="JavaWeb工程目录结构"><a href="#JavaWeb工程目录结构" class="headerlink" title="JavaWeb工程目录结构"></a>JavaWeb工程目录结构</h3><p><img src="/2020/02/04/jsp/D:/blog\hexo\source\_posts\jsp\javaweb.png" alt="javaweb"></p>
+<p>tomcat服务器直接访问的是WebContent文件夹中的内容</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/21/CSS/" rel="next" title="CSSSSSSSSSS~">
+                <i class="fa fa-chevron-left"></i> CSSSSSSSSSS~
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Shang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Jsp-Servlet介绍"><span class="nav-number">1.</span> <span class="nav-text">Jsp/Servlet介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器"><span class="nav-number">2.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tomcat目录结构"><span class="nav-number">2.0.1.</span> <span class="nav-text">tomcat目录结构</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP"><span class="nav-number">3.</span> <span class="nav-text">JSP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是jsp"><span class="nav-number">3.0.1.</span> <span class="nav-text">什么是jsp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp三大指令"><span class="nav-number">3.0.2.</span> <span class="nav-text">jsp三大指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp中的小脚本（脚本片段）"><span class="nav-number">3.0.3.</span> <span class="nav-text">jsp中的小脚本（脚本片段）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp中的表达式（脚本表达式）"><span class="nav-number">3.0.4.</span> <span class="nav-text">jsp中的表达式（脚本表达式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp声明"><span class="nav-number">3.0.5.</span> <span class="nav-text">jsp声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp注释"><span class="nav-number">3.0.6.</span> <span class="nav-text">jsp注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaWeb工程目录结构"><span class="nav-number">3.0.7.</span> <span class="nav-text">JavaWeb工程目录结构</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
