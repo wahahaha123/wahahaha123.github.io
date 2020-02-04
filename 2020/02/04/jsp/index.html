@@ -86,14 +86,14 @@
 <meta property="og:site_name" content="Cherish">
 <meta property="og:description" content="Jsp/Servlet介绍Jsp/Servlet是开发动态web的一门技术，特别擅长开发B/S结构的程序。 开发动态网页的主流语言主要有：php、jsp、.net  php：适用于做中小型系统，开发成本低，能够对变动的需求作出快速的反应 jsp：适用于做大型分布式系统 .net：只能运行在windows系统上，和jsp类似  那么对于动态网页，一定也就有静态网页，二者的区别如下：  动态网页：动态">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/jsp/D:/blog/hexo/source/_posts/jsp/tomcat目录.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/jsp/D:/blog/hexo/source/_posts/jsp/注释.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/04/jsp/D:/blog/hexo/source/_posts/jsp/javaweb.png">
-<meta property="og:updated_time" content="2020-02-04T03:25:02.779Z">
+<meta property="og:image" content="http://yoursite.com/2020/02/04/jsp/tomcat目录.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/04/jsp/注释.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/04/jsp/javaweb.png">
+<meta property="og:updated_time" content="2020-02-04T03:31:01.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA学习第一弹--jsp">
 <meta name="twitter:description" content="Jsp/Servlet介绍Jsp/Servlet是开发动态web的一门技术，特别擅长开发B/S结构的程序。 开发动态网页的主流语言主要有：php、jsp、.net  php：适用于做中小型系统，开发成本低，能够对变动的需求作出快速的反应 jsp：适用于做大型分布式系统 .net：只能运行在windows系统上，和jsp类似  那么对于动态网页，一定也就有静态网页，二者的区别如下：  动态网页：动态">
-<meta name="twitter:image" content="http://yoursite.com/2020/02/04/jsp/D:/blog/hexo/source/_posts/jsp/tomcat目录.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/04/jsp/tomcat目录.png">
 
 
 
@@ -322,30 +322,30 @@
 </ul>
 <p>这两种架构的界限，其实别不是太明显，有时候，一个B/S架构，也可以改变一下，使它看起来像一个C/S架构。</p>
 <h1 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h1><p>Jsp常用的web服务器有：Tomcat（主要使用这个，开源的而且免费）、weblogic（不开源不免费）、webphere，jboss等</p>
-<h3 id="tomcat目录结构"><a href="#tomcat目录结构" class="headerlink" title="tomcat目录结构"></a>tomcat目录结构</h3><p><img src="/2020/02/04/jsp/D:/blog\hexo\source\_posts\jsp\tomcat目录.png" alt="Tomcat目录结构"></p>
-<h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><h3 id="什么是jsp"><a href="#什么是jsp" class="headerlink" title="什么是jsp"></a>什么是jsp</h3><p>Java server page，java服务器页面，jsp和html文件几乎是一模一样的，不同的是jsp中可以书写java代码</p>
-<h3 id="jsp三大指令"><a href="#jsp三大指令" class="headerlink" title="jsp三大指令"></a>jsp三大指令</h3><p>指令的语法规则：</p>
+<h2 id="tomcat目录结构"><a href="#tomcat目录结构" class="headerlink" title="tomcat目录结构"></a>tomcat目录结构</h2><p><img src="/2020/02/04/jsp/tomcat目录.png" alt="Tomcat目录结构"></p>
+<h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><h2 id="什么是jsp"><a href="#什么是jsp" class="headerlink" title="什么是jsp"></a>什么是jsp</h2><p>Java server page，java服务器页面，jsp和html文件几乎是一模一样的，不同的是jsp中可以书写java代码</p>
+<h2 id="jsp三大指令"><a href="#jsp三大指令" class="headerlink" title="jsp三大指令"></a>jsp三大指令</h2><p>指令的语法规则：</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ 指令名 属性名=属性值 %&gt;</span><br></pre></td></tr></table></figure>
 <p>指令不是给程序员看的，是给服务器使用的。</p>
 <p>在jsp中有3大指令：分别是<strong>page</strong>指令、<strong>taglib</strong>指令、<strong>include</strong>指令</p>
-<h3 id="jsp中的小脚本（脚本片段）"><a href="#jsp中的小脚本（脚本片段）" class="headerlink" title="jsp中的小脚本（脚本片段）"></a>jsp中的小脚本（脚本片段）</h3><p>jsp中可以书写java代码，但是需要在脚本片段中书写Java代码。</p>
+<h2 id="jsp中的小脚本（脚本片段）"><a href="#jsp中的小脚本（脚本片段）" class="headerlink" title="jsp中的小脚本（脚本片段）"></a>jsp中的小脚本（脚本片段）</h2><p>jsp中可以书写java代码，但是需要在脚本片段中书写Java代码。</p>
 <p><strong>脚本片段的语法规则：</strong></p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">   Java代码块。</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
 <p><font color="red">注意事项：</font>脚本片段类似于类中的方法，因此不能够在脚本片段中定义方法;同一个Jsp文件中的所有脚本片段最终会被合并为一个</p>
-<h3 id="jsp中的表达式（脚本表达式）"><a href="#jsp中的表达式（脚本表达式）" class="headerlink" title="jsp中的表达式（脚本表达式）"></a>jsp中的表达式（脚本表达式）</h3><p>脚本表达式的功能类似于：out.print(变量名)</p>
+<h2 id="jsp中的表达式（脚本表达式）"><a href="#jsp中的表达式（脚本表达式）" class="headerlink" title="jsp中的表达式（脚本表达式）"></a>jsp中的表达式（脚本表达式）</h2><p>脚本表达式的功能类似于：out.print(变量名)</p>
 <p>目的是将内容输出到浏览器中</p>
 <p><strong>表达式的语法规则：</strong></p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= 变量名 %&gt;</span><br></pre></td></tr></table></figure>
 <p><font color="red">注意事项:</font>变量名后面不许加”;”</p>
-<h3 id="jsp声明"><a href="#jsp声明" class="headerlink" title="jsp声明"></a>jsp声明</h3><p>脚本片段中不能够定义方法，但是在jsp声明中可以定义方法</p>
+<h2 id="jsp声明"><a href="#jsp声明" class="headerlink" title="jsp声明"></a>jsp声明</h2><p>脚本片段中不能够定义方法，但是在jsp声明中可以定义方法</p>
 <p><strong>声明的语法规则：</strong></p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%!</span><br><span class="line">  方法定义</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
 <p><font color="red">注意事项：</font>如果需要定义一个方法的时候，就在jsp声明中定义，调用方法或者需要书写其他的代码的时候，就书写在脚本片段中。</p>
-<h3 id="jsp注释"><a href="#jsp注释" class="headerlink" title="jsp注释"></a>jsp注释</h3><p>jsp中有两种注释，分别为：</p>
+<h2 id="jsp注释"><a href="#jsp注释" class="headerlink" title="jsp注释"></a>jsp注释</h2><p>jsp中有两种注释，分别为：</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--被注释的内容--&gt;</span><br><span class="line">&lt;%--被注释的内容--%&gt;</span><br></pre></td></tr></table></figure>
 <p>这两种的区别如下：&lt;%– –%&gt;注释在查看网页源代码的时候，并不显示出来</p>
-<p><img src="/2020/02/04/jsp/D:/blog\hexo\source\_posts\jsp\注释.png" alt="注释"></p>
-<h3 id="JavaWeb工程目录结构"><a href="#JavaWeb工程目录结构" class="headerlink" title="JavaWeb工程目录结构"></a>JavaWeb工程目录结构</h3><p><img src="/2020/02/04/jsp/D:/blog\hexo\source\_posts\jsp\javaweb.png" alt="javaweb"></p>
+<p><img src="/2020/02/04/jsp/注释.png" alt="注释"></p>
+<h2 id="JavaWeb工程目录结构"><a href="#JavaWeb工程目录结构" class="headerlink" title="JavaWeb工程目录结构"></a>JavaWeb工程目录结构</h2><p><img src="/2020/02/04/jsp/javaweb.png" alt="javaweb"></p>
 <p>tomcat服务器直接访问的是WebContent文件夹中的内容</p>
 
       
@@ -493,7 +493,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Jsp-Servlet介绍"><span class="nav-number">1.</span> <span class="nav-text">Jsp/Servlet介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器"><span class="nav-number">2.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tomcat目录结构"><span class="nav-number">2.0.1.</span> <span class="nav-text">tomcat目录结构</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP"><span class="nav-number">3.</span> <span class="nav-text">JSP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是jsp"><span class="nav-number">3.0.1.</span> <span class="nav-text">什么是jsp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp三大指令"><span class="nav-number">3.0.2.</span> <span class="nav-text">jsp三大指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp中的小脚本（脚本片段）"><span class="nav-number">3.0.3.</span> <span class="nav-text">jsp中的小脚本（脚本片段）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp中的表达式（脚本表达式）"><span class="nav-number">3.0.4.</span> <span class="nav-text">jsp中的表达式（脚本表达式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp声明"><span class="nav-number">3.0.5.</span> <span class="nav-text">jsp声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp注释"><span class="nav-number">3.0.6.</span> <span class="nav-text">jsp注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaWeb工程目录结构"><span class="nav-number">3.0.7.</span> <span class="nav-text">JavaWeb工程目录结构</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Jsp-Servlet介绍"><span class="nav-number">1.</span> <span class="nav-text">Jsp/Servlet介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器"><span class="nav-number">2.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tomcat目录结构"><span class="nav-number">2.1.</span> <span class="nav-text">tomcat目录结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP"><span class="nav-number">3.</span> <span class="nav-text">JSP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是jsp"><span class="nav-number">3.1.</span> <span class="nav-text">什么是jsp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp三大指令"><span class="nav-number">3.2.</span> <span class="nav-text">jsp三大指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp中的小脚本（脚本片段）"><span class="nav-number">3.3.</span> <span class="nav-text">jsp中的小脚本（脚本片段）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp中的表达式（脚本表达式）"><span class="nav-number">3.4.</span> <span class="nav-text">jsp中的表达式（脚本表达式）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp声明"><span class="nav-number">3.5.</span> <span class="nav-text">jsp声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsp注释"><span class="nav-number">3.6.</span> <span class="nav-text">jsp注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaWeb工程目录结构"><span class="nav-number">3.7.</span> <span class="nav-text">JavaWeb工程目录结构</span></a></li></ol></li></ol></div>
             
 
           </div>
